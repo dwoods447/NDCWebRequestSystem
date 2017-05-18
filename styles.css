@@ -1,0 +1,56 @@
+	.container-fluid{
+		margin: 0 !important;
+		padding: 0 !important;
+		overflow: hidden;
+
+	}
+
+
+
+ .form-container{
+ 	min-height: 100% !important;
+ }
+
+
+ .form-control{
+ 	
+ 	width: 75%;
+ 	height: 45px;
+ 	margin: 5px auto;
+ 	padding: 0.3em;
+ 	border-radius: 0px !important;
+ }
+
+ .control-label{
+ 	display: block;
+ 	width: 75%;
+ 	height: 25px;
+ 	margin: 0px auto;
+ 	padding: 0em;
+ }
+
+ .left, .right{
+ 	margin-left: 16%;
+ 	max-width:  135px;
+ 	text-align: center;
+ }
+
+ #avatar{
+ 	text-align: center;
+ 	margin:0 auto;
+ 	display: block;
+ 	font-size: 7em;
+ }
+
+#checkbox{
+   width: 20px;
+   height: 20px;
+   display: inline-block;
+   margin-left: 12.8%;
+}
+
+
+.error{
+	 font-size: 18px;
+	color: red;
+}
