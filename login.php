@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
  }
 
   $username  =	 cleanValues($_POST['username']);
-  $password =    cleanValues($_POST['password']);
+  $password =    $_POST['password'];
 
 
        $expected_values = ['username', 'password'];
@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
 
 function checkCredentials($username, $password){
    
-    $query = "SELECT *  FROM Users WHERE username =  '$username' AND password = '$password'";
+    $query = "SELECT *  FROM users WHERE username =  '" . $username . "' AND password = '" . $password ."'";
 
        require('connect.php');
 
@@ -49,7 +49,7 @@ function checkCredentials($username, $password){
 
 		if (mysqli_num_rows($result) > 0) {
 		    // return result if found
-		    header( 'Location: web_form.php') ;
+		    header( 'Location: admin.php') ;
 		    echo "Result Found";
 		} else {
 
@@ -70,7 +70,7 @@ function checkCredentials($username, $password){
 
  <div class="container-fluid">
           <div class="row">
-           <h4 style="text-align: center; margin: 0 auto; max-width: 48%;">Sign In&nbsp;<span style="display: inline-block;">or</span>&nbsp;<a href="javascrip:void(0)">Create Account</a></h4> 
+           <h3 style="text-align: center; margin: 0 auto; max-width: 48%;">Sign In&nbsp;<span style="display: inline-block;"></h3> 
          </div>
       <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
@@ -122,6 +122,14 @@ function checkCredentials($username, $password){
             <?php if(!$credential_check && !$missing): ?>
 		     <p class="error" style="text-align: center;">Incorrect Usernme/Password combination.</p>
 		   <?php endif;?>
+
+		    <div>
+		    	
+		    	<p style="text-align: center;">username: admin</p>
+
+		    	<p style="text-align: center;">password: password</p>
+
+		    </div>
 		</form>
 
 

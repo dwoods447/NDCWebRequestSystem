@@ -1,3 +1,10 @@
+<?php
+// Script for creating new web requests.
+// Author: Demaria Woods
+// dwoods447@gmail.com
+// May 19, 2017
+?>
+
 <?php include 'header.php'; ?>		
 <?php include 'nav.php'; ?>	 
 <style>
@@ -44,7 +51,6 @@
     visibility: hidden;
   }
 </style>
-<pre>
 
 <?php
 
@@ -84,69 +90,31 @@
        
       
          $staffID = $_POST['coordId'];
-           $coordComments = $_POST['message'];
+           $coordComments = htmlspecialchars($_POST['message']);
+           $coordComments = mysqli_real_escape_string($conn, $coordComments);
+
+           $priority = $_POST['priority'];
        
-$query = "INSERT INTO webrequest (DateCreated, DateForCompletion, Link1, Link2, Link3, Link4, DropBoxLink, StaffID, CoordinatorComments) VALUES ('{$dateCreated}','{$dateforCompletion}',  '{$link[0]} ', '{$link[1]}' , '{$link[2]}', '{$link[3]}', '{$dropbox_link}', '{$staffID}' , '{$coordComments}' )";
+$query = "INSERT INTO webrequest (DateCreated, DateForCompletion, Link1, Link2, Link3, Link4, DropBoxLink, StaffID, CoordinatorComments, Priority) VALUES ('{$dateCreated}','{$dateforCompletion}',  '{$link[0]} ', '{$link[1]}' , '{$link[2]}', '{$link[3]}', '{$dropbox_link}', '{$staffID}' , '{$coordComments}', '{$priority}' )";
        
              
              $result = mysqli_query($conn, $query);
 
        if($result){
+        /*
          echo "Success!";
          echo '<br/>' . $query;
+         */
+         error_reporting(E_ALL & ~E_NOTICE);
+
        }else{
          die('Database query failed ' . mysqli_error($conn));
        }
-
-    
-
-    echo '<br>';
-/*
-       $query2 = "SELECT DateCreated, DateForCompletion, Link1, Link2, Link3, Link4, DropBoxLink, StaffID, CoordinatorComments FROM webrequest";
-
-         $result = mysqli_query($conn, $query2);
-
-
-       while($row  = mysqli_fetch_assoc($result)){
-             
-             echo '<ul>';
-            echo '<li>'  . $row['DateCreated'] . '</li>';
-            echo '<li>'  . $row['DateForCompletion'] . '</li>';
-            echo '<li>'  . $row['Link1'] . '</li>';
-            echo '<li>'  . $row['Link2'] . '</li>';
-            echo '<li>'  . $row['Link3'] . '</li>';
-            echo '<li>'  . $row['Link4'] . '</li>';
-            echo '<li>'  . $row['DropBoxLink'] . '</li>';
-            echo '<li>'  . $row['StaffID'] . '</li>';
-            echo '<li>'  . $row['CoordinatorComments'] . '</li>';
-           
-
-             echo '</ul>';
-       }
-
-       echo '<br>';
-*/
-
-/*
-    //Capture all links
-         if(isset($_POST['link']) && is_array($_POST['link'])){
-          
-                 foreach ($_POST['link'] as $key => $link) {
-                  
-
-                  //extract($_POST['links'], EXTR_PREFIX_SAME)
-
-                 }
-
-
-*/
 
 }
   
 
 ?>
-
-</pre>
 <div class="col-lg-12 col-md-12 col-sm-12" id="container">
 
 <!--<pre>
@@ -154,7 +122,7 @@ $query = "INSERT INTO webrequest (DateCreated, DateForCompletion, Link1, Link2, 
 </pre>-->
 <form  action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" style="padding: 1em; display: block; width: 90%; min-height: 100%; overflow: hidden; margin: 0 auto;">
 <div style="text-align: center;"><h2>National Diversity Council &mdash; Web Requests</h2>
-  <p>Fill out this form to have web edits completed. To view the status of a request, please visit []. For more information on how to use the form, please visit []. </p></div>
+  <p>Fill out this form to have web edits completed.  </p></div>
  <div class="col-sm-12">
     <label class="label-input">Site Links (Max 4): </label>
 	 <div class="input_fields_wrap">

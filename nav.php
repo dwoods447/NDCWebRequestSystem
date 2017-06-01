@@ -13,6 +13,20 @@
 
 	margin-top: -10px;
 }
+.navbar-nav > li > a{
+  display:  inline-block;
+  padding: 1em !important;
+  font-size: 1em;
+  width: 160px;
+  height: 75px;
+  text-transform: uppercase;
+  text-align: center;
+
+}
+
+.nav li{
+  padding: 1em;
+}
 </style>
 
 <nav class="navbar navbar-inverse">
@@ -23,16 +37,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span> 
       </button>
-      <a class="navbar-brand" href="#"><img src="<?php echo $siteroot; ?>images/logo-top.png" alt="logo"></a>
+      <a class="navbar-brand" href="./index.php"><img src="<?php echo $siteroot; ?>images/logo-top.png" alt="logo"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
+         <li><a href="./web_form.php">New Request</a></li>
+         <li><a href="./requests.php">View Requests...</a></li>
+         <li><a href="./login.php">Admin Panel</a></li>
         
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
+        <li>&nbsp;</li>
       </ul>
     </div>
   </div>
